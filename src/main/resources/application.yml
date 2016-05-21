@@ -1,4 +1,6 @@
 spring:
+  thymeleaf:
+    mode: LEGACYHTML5
   datasource:
     url: jdbc:mysql://121.251.255.96:3306/yibantest
     username: yibantest
@@ -15,3 +17,4 @@ spring:
         dialect: org.hibernate.dialect.MySQL5Dialect
 server:
   port: 8081
+
