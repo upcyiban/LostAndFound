@@ -17,16 +17,17 @@ public class Official {
 
     private String title;
     private String detail;
-    private int status;
+    private int status = 0;
     private String date;
 
-    public Official(String title, String detail, int status, String date) {
+    public Official(String title, String detail, String date) {
         this.title = title;
         this.detail = detail;
-        this.status = status;
         this.date = date;
     }
-    public Official(){}
+
+    public Official() {
+    }
 
     public int getId() {
         return id;
