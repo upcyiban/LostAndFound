@@ -45,6 +45,11 @@ public class AdminController {
         officialDao.delete(id);
         return "redirect:officialadmin";
     }
+    @RequestMapping("/login")
+    public String loginAdmin(){
+        return "login";
+    }
+
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String loginResult(String username,String password,Model model){
         Collection<Admin> admins = adminDao.findByUsernameAndPassword(username, password);
@@ -52,7 +57,7 @@ public class AdminController {
             return "login";//web
         }
         else{
-            return "addofficial";
+            return "redirect:officialadmin";
         }
     }
     private Sort sortById(){
