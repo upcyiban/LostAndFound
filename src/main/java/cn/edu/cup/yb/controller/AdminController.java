@@ -1,5 +1,7 @@
 package cn.edu.cup.yb.controller;
 
+import cn.edu.cup.yb.model.Admin;
+import cn.edu.cup.yb.model.AdminDao;
 import cn.edu.cup.yb.model.Official;
 import cn.edu.cup.yb.model.OfficialDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -19,6 +22,8 @@ public class AdminController {
 
     @Autowired
     private OfficialDao officialDao;
+    @Autowired
+    private AdminDao adminDao;
 
     @RequestMapping("/officialadmin")
     public String showAddofficialI(Model model) {
@@ -40,10 +45,16 @@ public class AdminController {
         officialDao.delete(id);
         return "redirect:officialadmin";
     }
-
-
-
-
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public String loginResult(String username,String password,Model model){
+        Collection<Admin> admins = adminDao.findByUsernameAndPassword(username, password);
+        if(admins.isEmpty()){
+            return "login";//web
+        }
+        else{
+            return "addofficial";
+        }
+    }
     private Sort sortById(){
         return new Sort(Sort.Direction.DESC,"id");
     }
