@@ -5,12 +5,14 @@ import cn.edu.cup.yb.util.MCrypt;
 import cn.edu.cup.yb.util.SessionUser;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 
 /**
  * Created by yyljj on 2016/5/21.
  */
+@Service
 public class LoginService {
 
     @Autowired
