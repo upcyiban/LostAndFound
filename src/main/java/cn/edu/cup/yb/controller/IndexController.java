@@ -1,5 +1,6 @@
 package cn.edu.cup.yb.controller;
 
+import cn.edu.cup.yb.confing.DevConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpSession;
@@ -17,7 +18,7 @@ public class IndexController {
     }
 
     public String toYibanAuth() {
-        String auth = "redirect:https://openapi.yiban.cn/oauth/authorize?client_id=" + ProductConfig.client_id + "&redirect_uri=" + ProductConfig.redirect_uri;
+        String auth = "redirect:https://openapi.yiban.cn/oauth/authorize?client_id=" + DevConfig.client_id + "&redirect_uri=" + DevConfig.redirect_uri;
         return auth;
     }
 }
