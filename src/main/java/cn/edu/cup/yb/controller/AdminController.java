@@ -24,7 +24,7 @@ public class AdminController {
     private OfficialDao officialDao;
     @Autowired
     private AdminDao adminDao;
-
+    public int loginAdmin=0;
     @RequestMapping("/officialadmin")
     public String showAddofficialI(Model model) {
 
@@ -45,21 +45,36 @@ public class AdminController {
         officialDao.delete(id);
         return "redirect:officialadmin";
     }
+    //login admin and official auth
     @RequestMapping("/login")
     public String loginAdmin(){
-        return "login";
+        if(loginAdmin==0){
+            return "login";
+        }
+        else {
+            return "officialadmin";
+        }
     }
-
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String loginResult(String username,String password,Model model){
         Collection<Admin> admins = adminDao.findByUsernameAndPassword(username, password);
         if(admins.isEmpty()){
+            loginAdmin=0;
             return "login";//web
         }
         else{
+            loginAdmin=1;
             return "redirect:officialadmin";
         }
     }
+    @RequestMapping("/official")
+    public String isAdmin(){
+        if(loginAdmin != 1)
+            return "login";
+        else
+            return "official";
+    }
+    //end login admin and official auth
     private Sort sortById(){
         return new Sort(Sort.Direction.DESC,"id");
     }
