@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:mysql://121.251.255.96:3306/yibantest
+    username: yibantest
+    password: yibantest
+    test-while-idle: true
+    validation-query: SELECT 1
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
