@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by 77dfeba on 2016/5/21.
  */
 @Entity
-@Table(name = "officialamin")
+@Table(name = "officialadmin")
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
