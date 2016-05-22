@@ -25,15 +25,7 @@ public class AdminController {
     @Autowired
     private OfficialDao officialDao;
     @Autowired
-    private HttpSession session=null;
-
-    @RequestMapping("/officialadmin")
-    public String showAddofficialI(Model model) {
-
-        Iterable<Official> lists = officialDao.findAll(sortById());
-        model.addAttribute("lists", lists);
-        return "officialadmin";
-    }
+    private HttpSession session = null;
 
     @RequestMapping(value = "/official", method = RequestMethod.POST)
     public String offcialAddData(String title, String detail) {
@@ -48,7 +40,6 @@ public class AdminController {
         officialDao.delete(id);
         return "redirect:officialadmin";
     }
-
 
     @RequestMapping("/changestatus")
     public String changestatus(int id){
@@ -67,37 +58,36 @@ public class AdminController {
         officialDao.save(official);
         return "redirect:officialadmin";
     }
-
-
-
     //login admin and official auth
+
     @RequestMapping("/login")
     public String loginAdmin() {
-        if (session == null) {
+        if (session.getAttribute("user") == null) {
             return "login";
-        } else {
-            return "redirect:officialadmin";
-        }
+        } else {return "redirect:officialadmin";}
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginResult(String username, String password) {
         if ((Objects.equals(username, DevConfig.adminUsername)) && (Objects.equals(password, DevConfig.adminPassword))) {
-            session.setAttribute("admin",session);
+            session.setAttribute("user","admin");
             return "redirect:officialadmin";
         } else {
             return "login";//web
         }
     }
 
-    @RequestMapping("/official")
-    public String isAdmin() {
-        if (session == null) {
+    @RequestMapping("/officialadmin")
+    public String isAdmin(Model model) {
+        if (session.getAttribute("user") == null) {
             return "login";//web
         } else {
-            return "redirect:officialadmin";
+            Iterable<Official> lists = officialDao.findAll(sortById());
+            model.addAttribute("lists", lists);
+            return "officialadmin";
         }
-    }    //end login admin and official auth
+    }
+    //end login admin and official auth
 
     private Sort sortById() {
         return new Sort(Sort.Direction.DESC, "date");
