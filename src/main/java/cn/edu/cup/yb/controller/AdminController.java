@@ -3,13 +3,16 @@ package cn.edu.cup.yb.controller;
 import cn.edu.cup.yb.confing.DevConfig;
 import cn.edu.cup.yb.model.Official;
 import cn.edu.cup.yb.model.OfficialDao;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.Objects;
 
@@ -22,7 +25,7 @@ public class AdminController {
     @Autowired
     private OfficialDao officialDao;
     @Autowired
-    public int loginAdmin = 0;
+    private HttpSession session=null;
 
     @RequestMapping("/officialadmin")
     public String showAddofficialI(Model model) {
@@ -70,7 +73,7 @@ public class AdminController {
     //login admin and official auth
     @RequestMapping("/login")
     public String loginAdmin() {
-        if (loginAdmin == 0) {
+        if (session == null) {
             return "login";
         } else {
             return "redirect:officialadmin";
@@ -80,18 +83,16 @@ public class AdminController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginResult(String username, String password) {
         if ((Objects.equals(username, DevConfig.adminUsername)) && (Objects.equals(password, DevConfig.adminPassword))) {
-            loginAdmin = 1;
+            session.setAttribute("admin",session);
             return "redirect:officialadmin";
-
         } else {
-            loginAdmin = 0;
             return "login";//web
         }
     }
 
     @RequestMapping("/official")
     public String isAdmin() {
-        if (loginAdmin != 1) {
+        if (session == null) {
             return "login";//web
         } else {
             return "redirect:officialadmin";
