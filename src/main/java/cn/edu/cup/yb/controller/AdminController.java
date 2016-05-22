@@ -55,6 +55,7 @@ public class AdminController {
             return "officialadmin";
         }
     }
+
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String loginResult(String username,String password,Model model){
         Collection<Admin> admins = adminDao.findByUsernameAndPassword(username, password);
@@ -69,12 +70,13 @@ public class AdminController {
     }
     @RequestMapping("/official")
     public String isAdmin(){
-        if(loginAdmin != 1)
-            return "login";
-        else
-            return "official";
+        if(loginAdmin != 1){
+            return "login";//web
     }
-    //end login admin and official auth
+        else{
+            return "redirect:officialadmin";
+        }
+    }    //end login admin and official auth
     private Sort sortById(){
         return new Sort(Sort.Direction.DESC,"id");
     }
