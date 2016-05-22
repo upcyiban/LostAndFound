@@ -1,27 +1,76 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
-<body>
-<h1>首页</h1>
-<table>
-    <thead>
-    <th>标题</th>
-    <th>详细信息</th>
-    <th>登记时间</th>
-    <th>状态</th>
-    </thead>
-    <tbody>
-    <tr th:each="list:${lists}">
-        <td th:text="${list.title}">title</td>
-        <td th:text="${list.detail}">title</td>
-        <td th:text="${list.date}"></td>
-        <td th:text="${list.status}"></td>
-    </tr>
-    </tbody>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
 
-</table>
+    <title>石大易招领</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron-narrow.css" rel="stylesheet"/>
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="#">主页</a></li>
+                <li role="presentation"><a href="#">联系我们</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">石大易招领</h3>
+    </div>
+
+    <div class="row marketing">
+        <div class="jumbotron">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>详情</th>
+                    <th>登记时间</th>
+                    <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="list:${lists}">
+                    <td th:text="${list.title}">title</td>
+                    <td th:text="${list.detail}">title</td>
+                    <td th:text="${list.date}"></td>
+                    <td th:text="${list.status}"><p class="label label-warning">未招领</p></td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p align="center">&copy; upcyiban</p>
+    </footer>
+
+</div> <!-- /container -->
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

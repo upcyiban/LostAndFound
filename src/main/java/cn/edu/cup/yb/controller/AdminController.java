@@ -21,16 +21,8 @@ public class AdminController {
 
     @Autowired
     private OfficialDao officialDao;
-    @Autowired
+
     public int loginAdmin = 0;
-
-    @RequestMapping("/officialadmin")
-    public String showAddofficialI(Model model) {
-
-        Iterable<Official> lists = officialDao.findAll(sortById());
-        model.addAttribute("lists", lists);
-        return "officialadmin";
-    }
 
     @RequestMapping(value = "/official", method = RequestMethod.POST)
     public String offcialAddData(String title, String detail) {
@@ -45,7 +37,6 @@ public class AdminController {
         officialDao.delete(id);
         return "redirect:officialadmin";
     }
-
 
     @RequestMapping("/changestatus")
     public String changestatus(int id){
@@ -89,12 +80,16 @@ public class AdminController {
         }
     }
 
-    @RequestMapping("/official")
-    public String isAdmin() {
+    @RequestMapping("/officialadmin")
+    public String isAdmin(Model model) {
         if (loginAdmin != 1) {
             return "login";//web
         } else {
-            return "redirect:officialadmin";
+            Iterable<Official> lists = officialDao.findAll(sortById());
+            model.addAttribute("lists", lists);
+            return "officialadmin";
+
+
         }
     }    //end login admin and official auth
 
