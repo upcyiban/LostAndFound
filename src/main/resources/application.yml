@@ -16,5 +16,5 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
 server:
-  port: 8081
+  port: 8085
 

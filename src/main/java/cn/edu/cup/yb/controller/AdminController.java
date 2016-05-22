@@ -29,7 +29,7 @@ public class AdminController {
     public String showAddofficialI(Model model) {
 
         Iterable<Official> lists = officialDao.findAll(sortById());
-        model.addAttribute("lists",lists);
+        model.addAttribute("lists", lists);
         return "officialadmin";
     }
 
@@ -40,27 +40,47 @@ public class AdminController {
         officialDao.save(official);
         return "redirect:/officialadmin";
     }
+
     @RequestMapping("/delet")
-    public String delet(int id){
+    public String delet(int id) {
         officialDao.delete(id);
         return "redirect:officialadmin";
     }
+
+    @RequestMapping("/changestatus")
+    public String changestatus(int id){
+        Official official = new Official();
+        official = officialDao.findOne(id);
+        official.setId(-1);
+        if(officialDao.findOne(id).getStatus() == 0){
+            officialDao.delete(id);
+            official.setId(id);
+            official.setStatus(1);
+        }else{
+            officialDao.delete(id);
+            official.setId(id);
+            official.setStatus(0);
+        }
+        officialDao.save(official);
+        return "redirect:officialadmin";
+    }
+
     @RequestMapping("/login")
-    public String loginAdmin(){
+    public String loginAdmin() {
         return "login";
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String loginResult(String username,String password,Model model){
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String loginResult(String username, String password, Model model) {
         Collection<Admin> admins = adminDao.findByUsernameAndPassword(username, password);
-        if(admins.isEmpty()){
+        if (admins.isEmpty()) {
             return "login";//web
-        }
-        else{
+        } else {
             return "redirect:officialadmin";
         }
     }
-    private Sort sortById(){
-        return new Sort(Sort.Direction.DESC,"id");
+
+    private Sort sortById() {
+        return new Sort(Sort.Direction.DESC, "date");
     }
 }

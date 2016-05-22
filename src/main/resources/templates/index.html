@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
 <h1>首页</h1>
+<table>
+    <thead>
+    <th>标题</th>
+    <th>详细信息</th>
+    <th>登记时间</th>
+    <th>状态</th>
+    </thead>
+    <tbody>
+    <tr th:each="list:${lists}">
+        <td th:text="${list.title}">title</td>
+        <td th:text="${list.detail}">title</td>
+        <td th:text="${list.date}"></td>
+        <td th:text="${list.status}"></td>
+    </tr>
+    </tbody>
+
+</table>
 </body>
 </html>

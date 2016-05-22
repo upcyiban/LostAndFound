@@ -17,13 +17,14 @@ public class Official {
 
     private String title;
     private String detail;
-    private int status = 0;
+    private int status ;
     private String date;
 
     public Official(String title, String detail, String date) {
         this.title = title;
         this.detail = detail;
         this.date = date;
+        this.setStatus(0);
     }
 
     public Official() {
