@@ -1,7 +1,6 @@
 package cn.edu.cup.yb.controller;
 
 import cn.edu.cup.yb.confing.DevConfig;
-import cn.edu.cup.yb.model.AdminDao;
 import cn.edu.cup.yb.model.Official;
 import cn.edu.cup.yb.model.OfficialDao;
 import cn.edu.cup.yb.service.LoginService;
@@ -51,6 +50,6 @@ public class IndexController {
 
 
     private Sort sortById() {
-        return new Sort(Sort.Direction.DESC, "id");
+        return new Sort(Sort.Direction.DESC, "date");
     }
 }
