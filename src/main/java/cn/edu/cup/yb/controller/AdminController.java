@@ -1,8 +1,6 @@
 package cn.edu.cup.yb.controller;
 
 import cn.edu.cup.yb.confing.DevConfig;
-import cn.edu.cup.yb.model.Admin;
-import cn.edu.cup.yb.model.AdminDao;
 import cn.edu.cup.yb.model.Official;
 import cn.edu.cup.yb.model.OfficialDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 
@@ -25,7 +22,6 @@ public class AdminController {
     @Autowired
     private OfficialDao officialDao;
     @Autowired
-    private AdminDao adminDao;
     public int loginAdmin = 0;
 
     @RequestMapping("/officialadmin")
