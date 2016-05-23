@@ -1,4 +1,4 @@
-package cn.edu.cup.yb.util;
+package cn.edu.upc.yb.util;
 
 /**
  * Created by echao on 2016/2/24.

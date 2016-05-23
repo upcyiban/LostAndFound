@@ -1,4 +1,4 @@
-package cn.edu.cup.yb;
+package cn.edu.upc.yb;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

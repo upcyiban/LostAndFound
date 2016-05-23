@@ -1,9 +1,9 @@
 /*
  *
  */
-package cn.edu.cup.yb.util;
+package cn.edu.upc.yb.util;
 
-import cn.edu.cup.yb.confing.DevConfig;
+import cn.edu.upc.yb.confing.DevConfig;
 
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;

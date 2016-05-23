@@ -1,4 +1,4 @@
-package cn.edu.cup.yb.confing;
+package cn.edu.upc.yb.confing;
 
 /**
  * Created by yyljj on 2016/5/21.

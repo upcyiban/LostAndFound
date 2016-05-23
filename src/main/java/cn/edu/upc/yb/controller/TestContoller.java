@@ -1,4 +1,4 @@
-package cn.edu.cup.yb.controller;
+package cn.edu.upc.yb.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

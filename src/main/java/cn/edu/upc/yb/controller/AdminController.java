@@ -1,11 +1,9 @@
-package cn.edu.cup.yb.controller;
+package cn.edu.upc.yb.controller;
 
-import cn.edu.cup.yb.confing.DevConfig;
-import cn.edu.cup.yb.model.Official;
-import cn.edu.cup.yb.model.OfficialDao;
-import org.hibernate.Session;
+import cn.edu.upc.yb.confing.DevConfig;
+import cn.edu.upc.yb.model.Official;
+import cn.edu.upc.yb.model.OfficialDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

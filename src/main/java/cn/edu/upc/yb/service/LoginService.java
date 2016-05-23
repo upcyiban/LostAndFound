@@ -1,8 +1,8 @@
-package cn.edu.cup.yb.service;
+package cn.edu.upc.yb.service;
 
-import cn.edu.cup.yb.confing.DevConfig;
-import cn.edu.cup.yb.util.MCrypt;
-import cn.edu.cup.yb.util.SessionUser;
+import cn.edu.upc.yb.confing.DevConfig;
+import cn.edu.upc.yb.util.MCrypt;
+import cn.edu.upc.yb.util.SessionUser;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
-package cn.edu.cup.yb.controller;
+package cn.edu.upc.yb.controller;
 
-import cn.edu.cup.yb.service.LoginService;
+import cn.edu.upc.yb.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

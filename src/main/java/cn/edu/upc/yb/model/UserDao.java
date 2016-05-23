@@ -1,4 +1,4 @@
-package cn.edu.cup.yb.model;
+package cn.edu.upc.yb.model;
 
 import org.springframework.data.repository.CrudRepository;
 
