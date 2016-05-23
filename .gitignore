@@ -1,4 +1,5 @@
 .idea/
+application-production.yml
 *iml
 target/
 lostandfound.properties
