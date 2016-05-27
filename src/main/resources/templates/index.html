@@ -54,7 +54,7 @@
                 <tr th:each="list:${lists}">
                     <td th:text="${list.title}">title</td>
                     <td th:text="${list.detail}">title</td>
-                    <td th:text="${list.date}"></td>
+                    <td th:text="${#dates.format(list.date,'yyyy年MM月dd日 HH时mm分')}"></td>
                     <td th:text="${list.status}"><p class="label label-warning">未招领</p></td>
                 </tr>
 

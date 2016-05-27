@@ -24,7 +24,7 @@
             <td th:text="${list.detail}">title</td>
             <td><a href="#" th:href="@{/changestatus(id=${list.id})}" th:text="${list.status}">未找到</a></td>
             <td><a href="#" th:href="@{/delet(id=${list.id})}">删除</a></td>
-            <td th:text="${list.date}"></td>
+            <td th:text="${#dates.format(list.date,'yyyy年MM月dd日 HH时mm分')}"></td>
         </tr>
     </tbody>
 
