@@ -19,22 +19,10 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
 
     @Autowired
-    private HttpSession httpSession;
-
-    @Autowired
     private LoginService loginService;
 
     @Autowired
     private OfficialDao officialDao;
-
-    public boolean isLogin() {
-        return httpSession.getAttribute("userid") != null;
-    }
-
-    public String toYibanAuth() {
-        String auth = "redirect:https://openapi.yiban.cn/oauth/authorize?client_id=" + DevConfig.client_id + "&redirect_uri=" + DevConfig.redirect_uri;
-        return auth;
-    }
 
     @RequestMapping("/")
     public String showIndex(Model model) {

@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Created by yyljj on 2016/5/21.
  */
+
+/**
+ * 易班验证登录
+ */
 @Controller
 public class LoginController {
 

@@ -22,9 +22,16 @@ public class AdminController {
 
     @Autowired
     private OfficialDao officialDao;
+
     @Autowired
     private HttpSession session = null;
 
+
+    /**
+     * 管理员添加数据库
+     * @param title
+     * @param detail
+     */
     @RequestMapping(value = "/official", method = RequestMethod.POST)
     public String offcialAddData(String title, String detail) {
         Date now = new Date();
@@ -33,31 +40,38 @@ public class AdminController {
         return "redirect:/officialadmin";
     }
 
+    /**
+     * 删除某条数据
+     * @param id
+     * @return
+     */
     @RequestMapping("/delet")
     public String delet(int id) {
         officialDao.delete(id);
         return "redirect:officialadmin";
     }
 
+    /**
+     * 改变状态
+     * @param id
+     * @return
+     */
     @RequestMapping("/changestatus")
     public String changestatus(int id){
-        Official official = new Official();
-        official = officialDao.findOne(id);
-        official.setId(-1);
-        if(officialDao.findOne(id).getStatus() == 0){
-            officialDao.delete(id);
-            official.setId(id);
+        Official official = officialDao.findOne(id);
+        if(official.getStatus() == 0){
             official.setStatus(1);
         }else{
-            officialDao.delete(id);
-            official.setId(id);
             official.setStatus(0);
         }
         officialDao.save(official);
         return "redirect:officialadmin";
     }
-    //login admin and official auth
 
+    /**
+     * 管理员登录界面
+     * @return
+     */
     @RequestMapping("/login")
     public String loginAdmin() {
         if (session.getAttribute("user") == null) {
@@ -65,6 +79,12 @@ public class AdminController {
         } else {return "redirect:officialadmin";}
     }
 
+    /**
+     * 验证管理员密码错误自动返回登陆界面，密码正确返回管理员界面
+     * @param username
+     * @param password
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginResult(String username, String password) {
         if ((Objects.equals(username, DevConfig.adminUsername)) && (Objects.equals(password, DevConfig.adminPassword))) {
@@ -75,6 +95,11 @@ public class AdminController {
         }
     }
 
+    /**
+     * 对直接访问管理员界面的拦截
+     * @param model
+     * @return
+     */
     @RequestMapping("/officialadmin")
     public String isAdmin(Model model) {
         if (session.getAttribute("user") == null) {
@@ -85,8 +110,11 @@ public class AdminController {
             return "officialadmin";
         }
     }
-    //end login admin and official auth
 
+    /**
+     * 按照时间排序
+     * @return
+     */
     private Sort sortById() {
         return new Sort(Sort.Direction.DESC, "date");
     }

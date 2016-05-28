@@ -8,6 +8,10 @@ import java.util.Date;
 /**
  * Created by yyljj on 2016/5/21.
  */
+
+/**
+ * 测试用的可以删掉
+ */
 @RestController
 public class TestContoller {
 
