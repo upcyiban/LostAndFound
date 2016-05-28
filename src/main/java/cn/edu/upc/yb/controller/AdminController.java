@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -47,7 +49,11 @@ public class AdminController {
      */
     @RequestMapping("/delet")
     public String delet(int id) {
-        officialDao.delete(id);
+
+        Official official = officialDao.findOne(id);
+        official.setIsdelet(true);
+        officialDao.save(official);
+
         return "redirect:officialadmin";
     }
 
@@ -105,17 +111,10 @@ public class AdminController {
         if (session.getAttribute("user") == null) {
             return "login";//web
         } else {
-            Iterable<Official> lists = officialDao.findAll(sortById());
+            Iterable<Official> lists = officialDao.findByIsdeletNotOrderByDateDesc(true);
             model.addAttribute("lists", lists);
             return "officialadmin";
         }
     }
 
-    /**
-     * 按照时间排序
-     * @return
-     */
-    private Sort sortById() {
-        return new Sort(Sort.Direction.DESC, "date");
-    }
 }

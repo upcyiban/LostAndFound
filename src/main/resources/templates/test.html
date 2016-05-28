@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <th>id</th>
+    <th>标题</th>
+    <th>详细信息</th>
+    <th>状态</th>
+    <th>删除</th>
+    <th>时间</th>
+    </thead>
+    <tbody>
+    <tr th:each="list:${lists}">
+        <td th:text="${list.title}"></td>
+        <td th:text="${list.title}">title</td>
+        <td th:text="${list.detail}">title</td>
+        <td><a href="#" th:href="@{/changestatus(id=${list.id})}" th:text="${list.status}">未找到</a></td>
+        <td><a href="#" th:href="@{/delet(id=${list.id})}">删除</a></td>
+        <td th:text="${#dates.format(list.date,'yyyy年MM月dd日 HH时mm分')}"></td>
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>

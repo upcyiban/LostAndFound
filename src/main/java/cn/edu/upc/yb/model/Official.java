@@ -17,8 +17,10 @@ public class Official {
 
     private String title;
     private String detail;
-    private int status ;
+    private int status;
     private String date;
+    private String category;
+    private boolean isdelet = false;
 
     public Official(String title, String detail, String date) {
         this.title = title;
@@ -70,4 +72,19 @@ public class Official {
         this.date = date;
     }
 
+    public boolean getIsdelet() {
+        return isdelet;
+    }
+
+    public void setIsdelet(boolean isdelet) {
+        this.isdelet = isdelet;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }

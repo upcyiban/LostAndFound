@@ -30,14 +30,10 @@ public class IndexController {
             return loginService.toYibanAuth();
         }
 
-        Iterable<Official> lists = officialDao.findAll(sortById());
+        Iterable<Official> lists = officialDao.findByIsdeletNotOrderByDateDesc(true);
         model.addAttribute("lists", lists);
 
         return "index";
     }
 
-
-    private Sort sortById() {
-        return new Sort(Sort.Direction.DESC, "date");
-    }
 }
