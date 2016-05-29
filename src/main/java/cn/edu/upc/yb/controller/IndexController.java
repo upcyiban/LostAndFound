@@ -32,8 +32,14 @@ public class IndexController {
 
         Iterable<Official> lists = officialDao.findByIsdeletNotOrderByDateDesc(true);
         model.addAttribute("lists", lists);
-
         return "index";
+    }
+
+    @RequestMapping("/detail")
+    public String showDetail(int id, Model model) {
+        String detail = officialDao.findOne(id).getDetail();
+        model.addAttribute("detail", detail);
+        return "detail";
     }
 
 }
