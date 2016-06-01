@@ -24,11 +24,17 @@ public class User {
     private String ybexp;
     private String ybrealname;
     private String ybidentity;
+    private String title;
+    private String detail;
+    private int status;
+    private String date;
+    private String category;
+    private boolean isdelet = false;
 
     public User() {
     }
 
-    public User(String ybuserid, String ybusername, String ybusernick, String ybsex, String ybmoney, String ybexp, String ybrealname, String ybidentity) {
+    public User(String ybuserid, String ybusername, String ybusernick, String ybsex, String ybmoney, String ybexp, String ybrealname, String ybidentity, String title, String detail, int status, String date, String category, boolean isdelet) {
         this.ybuserid = ybuserid;
         this.ybusername = ybusername;
         this.ybusernick = ybusernick;
@@ -37,6 +43,12 @@ public class User {
         this.ybexp = ybexp;
         this.ybrealname = ybrealname;
         this.ybidentity = ybidentity;
+        this.title = title;
+        this.detail = detail;
+        this.status = status;
+        this.date = date;
+        this.category = category;
+        this.isdelet = isdelet;
     }
 
     public int getId() {
@@ -109,5 +121,53 @@ public class User {
 
     public void setYbidentity(String ybidentity) {
         this.ybidentity = ybidentity;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public boolean isdelet() {
+        return isdelet;
+    }
+
+    public void setIsdelet(boolean isdelet) {
+        this.isdelet = isdelet;
     }
 }
