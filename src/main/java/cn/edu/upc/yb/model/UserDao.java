@@ -7,4 +7,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface UserDao extends CrudRepository<User,Integer>{
     public Iterable<User> findByIsdeletNotAndIsloserNotOrderByDateDesc(Boolean isdelet,Boolean isloser);
+    public Iterable<User> findByIsdeletNotOrderByDateDesc(Boolean isdelet);
 }

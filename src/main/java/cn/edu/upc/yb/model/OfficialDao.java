@@ -11,5 +11,4 @@ import java.util.Iterator;
  */
 public interface OfficialDao extends CrudRepository<Official,Integer>{
     public Iterable<Official> findByIsdeletNotOrderByDateDesc(Boolean isdelet);
-    public Iterable<Official> findAllOrderByDateDesc();
 }

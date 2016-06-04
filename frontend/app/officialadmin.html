@@ -26,13 +26,10 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-
     <div class="container">
       <div class="jumbotron">
         <h1>后台管理</h1>
       </div>
-
       <div class="row marketing">
         <form action="/official" method="post">
           <div>
@@ -57,15 +54,39 @@
           <tbody id="tbody">
           <tr th:each="list:${lists}">
             <td th:text="${#dates.format(list.date,'yyyy/MM/dd HH:mm')}"></td>
-            <td th:text="${list.title}">id</td>
+            <td th:text="${list.id}">id</td>
             <td th:text="${list.title}">title</td>
-            <td><a href="#" th:href="@{/detail(id=${list.id})}" th:text="${#strings.abbreviate(list.detail,10)}">详情</a></td>
+            <td><a href="#" th:href="@{/detail(id=${list.id},type=0)}" th:text="${#strings.abbreviate(list.detail,10)}">详情</a></td>
             <td><a href="#" th:href="@{/changestatus(id=${list.id})}" th:text="${list.status}">未找到</a></td>
-            <td><a href="#" th:href="@{/delet(id=${list.id})}">删除</a></td>
+            <td><a href="#" th:href="@{/delet(id=${list.id},type=0)}">删除</a></td>
           </tr>
           </tbody>
         </table>
       </div>
+      <div class="text-center"><h3>用户管理</h3></div>
+      <table class="table">
+
+        <thead class="table-striped">
+        <tr>
+          <td><p class="lead">时间</p></td>
+          <td><p class="lead">Id</p></td>
+          <td><p class="lead">标题</p></td>
+          <td><p class="lead">详细信息</p></td>
+          <td><p class="lead">删除</p></td>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        <tr th:each="list2:${lists2}">
+          <td th:text="${#dates.format(list2.date,'yyyy/MM/dd HH:mm')}"></td>
+          <td th:text="${list2.id}">id</td>
+          <td th:text="${list2.title}">title</td>
+          <td><a href="#" th:href="@{/detail(id=${list2.id},type=1)}" th:text="${#strings.abbreviate(list2.detail,10)}">详情</a></td>
+          <td><a href="#" th:href="@{/delet(id=${list2.id},type=1)}">删除</a></td>
+        </tr>
+        </tbody>
+      </table>
+
+
 
     <div class="footer" align="center">
       <footer class="footer">

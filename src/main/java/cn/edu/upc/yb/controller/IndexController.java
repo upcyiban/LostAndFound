@@ -3,6 +3,7 @@ package cn.edu.upc.yb.controller;
 import cn.edu.upc.yb.confing.DevConfig;
 import cn.edu.upc.yb.model.Official;
 import cn.edu.upc.yb.model.OfficialDao;
+import cn.edu.upc.yb.model.User;
 import cn.edu.upc.yb.model.UserDao;
 import cn.edu.upc.yb.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,9 @@ public class IndexController {
         if (!loginService.isLogin()) {
             return loginService.toYibanAuth();
         }
-
         Iterable<Official> lists = officialDao.findByIsdeletNotOrderByDateDesc(true);
         model.addAttribute("lists", lists);
+
         return "index";
     }
 
