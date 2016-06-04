@@ -1,86 +1,22 @@
-<!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-
-    <title>石大易招领</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-
-    <!-- Custom styles for this template -->
-    <link href="css/jumbotron-narrow.css" rel="stylesheet"/>
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]>
-    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-
-<div class="container">
-    <div class="header clearfix">
-        <nav>
-            <ul class="nav nav-pills pull-right">
-                <li role="presentation" class="active"><a href="#">主页</a></li>
-            </ul>
-        </nav>
-        <h3 class="text-muted">石大易招领</h3>
-    </div>
-
-    <div class="row marketing">
-        <div class="jumbotron">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>标题</th>
-                    <th>详情</th>
-                    <th>时间</th>
-                    <th>状态</th>
-                </tr>
-                </thead>
-                <tbody id="tbody">
-                <tr th:each="list:${lists}">
-                    <td th:text="${list.title}">title</td>
-                    <td><a href="#" th:href="@{/detail(id=${list.id})}" th:text="${#strings.abbreviate(list.detail,10)}">详情</a></td>
-                    <td th:text="${#dates.format(list.date,'yyyy/MM/dd HH:mm')}"></td>
-                    <td th:text="${list.status}"><p class="label label-warning">未招领</p></td>
-                </tr>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <script>
-        var t = document.getElementById("tbody");
+<!doctype html><html class="no-js" lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"><head><meta charset="utf-8"><meta name="description" content=""><meta name="viewport" content="width=device-width,initial-scale=1"><title>石大易招领</title><link rel="apple-touch-icon" href="apple-touch-icon.png"><!-- Place favicon.ico in the root directory --><link rel="stylesheet" href="styles/main.css"><script src="scripts/vendor/modernizr.js"></script></head><body><!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]--><div class="container"><div class="header clearfix"><nav><ul class="nav nav-pills pull-right"><li role="presentation" class="active"><a href="#">主页</a></li></ul></nav><h3 class="text-muted">石大易招领</h3></div><div class="row marketing"><div class="jumbotron"><table class="table table-striped"><thead><tr><th>标题</th><th>详情</th><th>时间</th><th>状态</th></tr></thead><tbody id="tbody"><tr th:each="list:${lists}"><td th:text="${list.title}">title</td><td><a href="#" th:href="@{/detail(id=${list.id})}" th:text="${#strings.abbreviate(list.detail,10)}">详情</a></td><td th:text="${#dates.format(list.date,'yyyy/MM/dd HH:mm')}"></td><td th:text="${list.status}"><p class="label label-warning">未招领</p></td></tr></tbody></table></div></div><script>var t = document.getElementById("tbody");
         var rows = t.rows;
         for (var i = 0; i < rows.length; i++) {
+          var cell = rows[i].cells[3];
+          if (cell.innerHTML == 0) {
+            cell.innerHTML = "未找到主人";
+          } else {
+            cell.innerHTML = "已找到主人";
+          }
+        }</script><div class="container"><div class="header clearfix"><nav><ul class="nav nav-pills pull-right"><li role="presentation" class="active"><a href="#">主页</a></li></ul></nav><h3 class="text-muted">石大易招领</h3></div><div class="row marketing"><div class="jumbotron"><table class="table table-striped"><thead><tr><th>标题</th><th>详情</th><th>时间</th><th>状态</th></tr></thead><tbody id="tbody"><tr th:each="list:${lists}"><td th:text="${list.title}">title</td><td><a href="#" th:href="@{/detail(id=${list.id})}" th:text="${#strings.abbreviate(list.detail,10)}">详情</a></td><td th:text="${#dates.format(list.date,'yyyy/MM/dd HH:mm')}"></td><td th:text="${list.status}"><p class="label label-warning">未招领</p></td></tr></tbody></table></div></div><script>var t = document.getElementById("tbody");
+          var rows = t.rows;
+          for (var i = 0; i < rows.length; i++) {
             var cell = rows[i].cells[3];
             if (cell.innerHTML == 0) {
-                cell.innerHTML = "未找到主人";
+              cell.innerHTML = "未找到主人";
             } else {
-                cell.innerHTML = "已找到主人";
+              cell.innerHTML = "已找到主人";
             }
-        }
-    </script>
-    <footer class="footer">
-        <p align="center">&copy; upcyiban<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259236200'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1259236200' type='text/javascript'%3E%3C/script%3E"));</script></p>
-    </footer>
-
-</div> <!-- /container -->
-
-
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-</body>
-</html>
+          }</script><div class="footer" align="center"><footer class="footer"><p align="center">&copy; upcyiban<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+          document.write(unescape("%3Cspan id='cnzz_stat_icon_1259236200'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1259236200' type='text/javascript'%3E%3C/script%3E"));</script></p></footer></div><script src="scripts/vendor.js"></script><script src="scripts/plugins.js"></script><script src="scripts/main.js"></script></div></div></body></html>

@@ -1,17 +1,16 @@
 {
-  "name": "123",
+  "name": "webapp",
   "private": true,
   "dependencies": {
-    "bootstrap": "~3.3.5",
+    "bootstrap-sass": "~3.3.5",
     "modernizr": "~2.8.1"
   },
   "overrides": {
-    "bootstrap": {
+    "bootstrap-sass": {
       "main": [
-        "less/bootstrap.less",
-        "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js",
-        "dist/fonts/*"
+        "assets/stylesheets/_bootstrap.scss",
+        "assets/fonts/bootstrap/*",
+        "assets/javascripts/bootstrap.js"
       ]
     }
   },
