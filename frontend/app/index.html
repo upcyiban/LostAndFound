@@ -30,18 +30,13 @@
 
 
 <div class="container">
-  <div class="header clearfix">
-    <nav>
-      <ul class="nav nav-pills pull-right">
-        <li role="presentation" class="active"><a href="index.html">主页</a></li>
-        <li role="presentation" class="active"><a href="findloser.html">寻找失主</a></li>
-        <li role="presentation" class="active"><a href="findthing.html">寻找物品</a></li>
-        <li role="presentation" class="active"><a href="publish.html">我要发布</a></li>
-      </ul>
-
-    </nav>
+  <ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="/">主页</a></li>
+    <li role="presentation"><a href="/findloser">寻找失主</a></li>
+    <li role="presentation"><a href="/findthing">寻找物品</a></li>
+    <li role="presentation"><a href="/publish">我要发布</a></li>
+  </ul>
     <h3 class="text-muted">石大易招领</h3>
-  </div>
 
   <div class="row marketing">
     <div class="jumbotron">
@@ -57,7 +52,7 @@
         <tbody id="tbody">
         <tr th:each="list:${lists}">
           <td th:text="${list.title}">title</td>
-          <td><a href="#" th:href="@{/detail(id=${list.id})}" th:text="${#strings.abbreviate(list.detail,10)}">详情</a>
+          <td><a href="#" th:href="@{/detail(id=${list.id},type=0)}" th:text="${#strings.abbreviate(list.detail,10)}">详情</a>
           </td>
           <td th:text="${#dates.format(list.date,'yyyy/MM/dd HH:mm')}"></td>
           <td th:text="${list.status}"><p class="label label-warning">未招领</p></td>

@@ -3,6 +3,7 @@ package cn.edu.upc.yb.controller;
 import cn.edu.upc.yb.confing.DevConfig;
 import cn.edu.upc.yb.model.Official;
 import cn.edu.upc.yb.model.OfficialDao;
+import cn.edu.upc.yb.model.UserDao;
 import cn.edu.upc.yb.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -24,6 +25,9 @@ public class IndexController {
     @Autowired
     private OfficialDao officialDao;
 
+    @Autowired
+    private UserDao userDao;
+
     @RequestMapping("/")
     public String showIndex(Model model) {
         if (!loginService.isLogin()) {
@@ -36,8 +40,13 @@ public class IndexController {
     }
 
     @RequestMapping("/detail")
-    public String showDetail(int id, Model model) {
-        String detail = officialDao.findOne(id).getDetail();
+    public String showDetail(int id,int type, Model model) {
+        String detail = null;
+        if(type == 0) {
+           detail = officialDao.findOne(id).getDetail();
+        }else {
+            detail = userDao.findOne(id).getDetail();
+        }
         model.addAttribute("detail", detail);
         return "detail";
     }

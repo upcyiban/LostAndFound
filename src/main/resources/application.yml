@@ -2,7 +2,7 @@ spring:
   thymeleaf:
     mode: LEGACYHTML5
   datasource:
-    url: jdbc:mysql://121.251.255.96:3306/yibantest
+    url: jdbc:mysql://121.251.255.96:3306/yibantest_lostandfound
     username: yibantest
     password: yibantest
     test-while-idle: true
