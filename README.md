@@ -5,7 +5,7 @@
 1. 前端部分
   前段采用yeoman框架进行搭建，gulp作为构建工具，打包出来压缩过的html/css/js代码。
   可以通过
-  ```python
+  ```
   python move.py
   ```
   进行快速移动前端代码至static/templates文件夹
