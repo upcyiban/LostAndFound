@@ -2,10 +2,14 @@
 import os
 import os.path
 import shutil
+import subprocess
 distpath = "dist"
 resourcespath = "../src/main/resources"
 staticpath = resourcespath + "/static"
 tempaltespath = resourcespath + "/templates"
+
+#执行命令gulp
+subprocess.call("gulp")
 
 #清理resources目录
 if os.path.isdir(staticpath):
