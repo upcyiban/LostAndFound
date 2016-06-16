@@ -22,9 +22,6 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private LoginService loginService;
-
-    @Autowired
     private UserDao userDao;
 
     @RequestMapping("/findloser")
