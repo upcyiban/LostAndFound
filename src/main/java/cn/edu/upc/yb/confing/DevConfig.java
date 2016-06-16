@@ -10,4 +10,5 @@ public class DevConfig {
 
     public static String adminUsername = "admin";
     public static String adminPassword = "admin";
+
 }

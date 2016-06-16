@@ -29,6 +29,20 @@ public class User {
     public User() {
     }
 
+    /**
+     *
+     * @param ybuserid
+     * @param ybusername
+     * @param ybusernick
+     * @param ybsex
+     * @param title
+     * @param detail
+     * @param status
+     * @param date
+     * @param category
+     * @param isdelet
+     * @param isloser
+     */
     public User(String ybuserid, String ybusername, String ybusernick, String ybsex, String title, String detail, int status, String date, String category, boolean isdelet, boolean isloser) {
         this.ybuserid = ybuserid;
         this.ybusername = ybusername;
