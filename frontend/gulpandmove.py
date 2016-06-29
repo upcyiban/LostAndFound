@@ -9,7 +9,8 @@ staticpath = resourcespath + "/static"
 tempaltespath = resourcespath + "/templates"
 
 #执行命令gulp
-subprocess.call("gulp")
+gulp = subprocess.call("gulp", shell = True)
+
 
 #清理resources目录
 if os.path.isdir(staticpath):
