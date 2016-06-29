@@ -22,7 +22,7 @@ public class LostandfoundApplicationTests {
 	@Test
 	public void contextLoads() {
 		for (int i = 0; i < 100; i++) {
-			User user = new User("id" + i, "name" + i, "nickname" + i, "M", "title" + i, "detail" + i, 1, new Date().toString(), null, false, false);
+			User user = new User("id" + i, "name" + i, "nickname" + i, "M", "title" + i, "detail" + i, 1, new Date().toString(), null, false, true);
 			userDao.save(user);
 		}
 	}
