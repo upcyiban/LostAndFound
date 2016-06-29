@@ -42,7 +42,6 @@ public class IndexController {
         Pageable pageable = new PageRequest(page,size);
         Page<Official> pages = officialDao.findByIsdeletNotOrderByDateDesc(true,pageable);
         model.addAttribute("page", new LinkPage<Official>(pages,"/"));
-
         return "index";
     }
 

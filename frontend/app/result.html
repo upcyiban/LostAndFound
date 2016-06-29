@@ -40,15 +40,8 @@
       <h4 th:text="${result}">提交结果</h4>
     </div>
 
-    <div class="footer" align="center">
-      <footer class="footer">
-        <p align="center">&copy; upcyiban</p>
-        <p>powered by <a href="http://yyljj.github.io">yyljj</a></p>
-        <script
-          type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-        document.write(unescape("%3Cspan id='cnzz_stat_icon_1259236200'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1259236200' type='text/javascript'%3E%3C/script%3E"));</script>
-      </footer>
-    </div>
+    <!-- footer -->
+    <div th:replace="footer"></div>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
