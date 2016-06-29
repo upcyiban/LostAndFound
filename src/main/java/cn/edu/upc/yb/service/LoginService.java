@@ -2,7 +2,7 @@ package cn.edu.upc.yb.service;
 
 import cn.edu.upc.yb.confing.DevConfig;
 import cn.edu.upc.yb.util.MCrypt;
-import cn.edu.upc.yb.util.SessionUser;
+import cn.edu.upc.yb.template.SessionUser;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

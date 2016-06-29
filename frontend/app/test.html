@@ -32,60 +32,46 @@
 
 <div class="container">
   <ul class="nav nav-pills">
-    <li role="presentation" class="active"><a href="/">主页</a></li>
+    <li role="presentation"><a href="/">主页</a></li>
     <li role="presentation"><a href="/findloser">寻找失主</a></li>
-    <li role="presentation"><a href="/findthing">寻找物品</a></li>
+    <li role="presentation" class="active"><a href="/user/findthing">寻找物品</a></li>
     <li role="presentation"><a href="/publish">我要发布</a></li>
   </ul>
-    <h3 class="text-muted">石大易招领</h3>
+  <h3 class="text-muted">石大易招领</h3>
 
-  <div class="row marketing">
-    <div class="jumbotron">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th>标题</th>
-          <th>详情</th>
-          <th>时间</th>
-          <th>状态</th>
-        </tr>
-        </thead>
-        <tbody id="tbody">
-        <tr th:each="list:${page.content}">
-          <td th:text="${list.title}">title</td>
-          <td><a href="#" th:href="@{/detail(id=${list.id},type=0)}" th:text="${#strings.abbreviate(list.detail,10)}">详情</a>
-          </td>
-          <td th:text="${#dates.format(list.date,'yyyy/MM/dd HH:mm')}"></td>
-          <td th:text="${list.status}"><p class="label label-warning">未招领</p></td>
-        </tr>
-
-        </tbody>
-      </table>
-      <!-- page -->
-      <div th:replace="page"></div>
-    </div>
+<div class="row marketing">
+  <div class="jumbotron">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>标题</th>
+        <th>详情</th>
+        <th>时间</th>
+        <th>发布者</th>
+      </tr>
+      </thead>
+      <tbody id="tbody">
+      <tr th:each="list:${page.content}">
+        <td th:text="${list.title}">title</td>
+        <td><a href="#" th:href="@{/detail(id=${list.id},type=1)}" th:text="${#strings.abbreviate(list.detail,10)}">详情</a>
+        </td>
+        <td th:text="${#dates.format(list.date,'yyyy/MM/dd HH:mm')}"></td>
+        <td th:text="${list.ybusernick}">title</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-  <script>
-    var t = document.getElementById("tbody");
-    var rows = t.rows;
-    for (var i = 0; i < rows.length; i++) {
-      var cell = rows[i].cells[3];
-      if (cell.innerHTML == 0) {
-        cell.innerHTML = "未认领";
-      } else {
-        cell.innerHTML = "已认领";
-      }
-    }
-  </script>
+</div>
+<!-- page -->
+<div th:replace="page"></div>
+<!-- footer -->
+<div th:replace="footer"></div>
 
-  <!-- footer -->
-  <div th:replace="footer"></div>
-
-  <!-- build:js scripts/vendor.js -->
-  <!-- bower:js -->
-  <script src="/bower_components/jquery/dist/jquery.js"></script>
-  <!-- endbower -->
-  <!-- endbuild -->
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
 
   <!-- build:js scripts/plugins.js -->
   <script src="/bower_components/bootstrap/js/affix.js"></script>
@@ -102,8 +88,8 @@
   <script src="/bower_components/bootstrap/js/tab.js"></script>
   <!-- endbuild -->
 
-  <!-- build:js scripts/main.js -->
-  <script src="scripts/main.js"></script>
-  <!-- endbuild -->
+<!-- build:js scripts/main.js -->
+<script src="scripts/main.js"></script>
+<!-- endbuild -->
 </body>
 </html>
