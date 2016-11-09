@@ -1,15 +1,25 @@
 package cn.edu.upc.yb.confing;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 /**
  * Created by yyljj on 2016/5/21.
  */
+@Component
 public class DevConfig {
-    public static String client_id = "2f803dad07f95108";
-    public static String redirect_uri = "http://f.yiban.cn/iapp47291";
-    public static String AppSecret = "f732a9b113713c3e1f85a85b6b1282b8";
+    @Value("${yibanoauth.lostandfound.APPID}")
+    public static String client_id;
 
-    public static String adminUsername = "admin";
-    public static String adminPassword = "admin";
+    @Value("${yibanoauth.lostandfound.APPURL}")
+    public static String redirect_uri;
 
+    @Value("${yibanoauth.lostandfound.APPkey}")
+    public static String AppSecret;
 
+    @Value("${yibanoauth.lostandfound.name}")
+    public static String adminUsername;
+
+    @Value("${yibanoauth.lostandfound.password}")
+    public static String adminPassword;
 }
