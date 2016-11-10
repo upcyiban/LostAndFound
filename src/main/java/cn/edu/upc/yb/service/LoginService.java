@@ -1,8 +1,8 @@
 package cn.edu.upc.yb.service;
 
-import cn.edu.upc.yb.confing.DevConfig;
-import cn.edu.upc.yb.util.MCrypt;
+import cn.edu.upc.yb.confing.Config;
 import cn.edu.upc.yb.template.SessionUser;
+import cn.edu.upc.yb.util.MCrypt;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,17 +18,20 @@ public class LoginService {
     @Autowired
     private HttpSession httpSession;
 
+    @Autowired
+    private Config config;
+
     public boolean isLogin() {
         return httpSession.getAttribute("userid") != null;
     }
 
     public String toYibanAuth() {
-        String auth = "redirect:https://openapi.yiban.cn/oauth/authorize?client_id=" + DevConfig.client_id + "&redirect_uri=" + DevConfig.redirect_uri;
+        String auth = "redirect:https://openapi.yiban.cn/oauth/authorize?client_id=" + config.client_id + "&redirect_uri=" + config.redirect_uri;
         return auth;
     }
 
     public String processAuth(String verify_request) throws Exception {
-        MCrypt mCrypt = new MCrypt();
+        MCrypt mCrypt = new MCrypt(config);
         String res = new String(mCrypt.decrypt(verify_request));
         if (saveSession(res)) {
             return "redirect:/";

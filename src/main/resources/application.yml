@@ -21,7 +21,7 @@ server:
 yibanoauth:
   lostandfound:
     APPID: "2f803dad07f95108"
-    APPkey: "6b7d82af041da97d586ad8b8d8204225"
+    APPkey: "f732a9b113713c3e1f85a85b6b1282b8"
     APPURL: "http://f.yiban.cn/iapp47291"
     name: "admin"
     password: "admin"

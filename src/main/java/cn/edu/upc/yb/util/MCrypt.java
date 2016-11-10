@@ -3,7 +3,9 @@
  */
 package cn.edu.upc.yb.util;
 
-import cn.edu.upc.yb.confing.DevConfig;
+import cn.edu.upc.yb.confing.Config;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
@@ -15,14 +17,15 @@ public class MCrypt {
 
     static char[] HEX_CHARS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-    private String iv = DevConfig.client_id;//Dummy iv (CHANGE IT!)
+
     private IvParameterSpec ivspec;
     private SecretKeySpec keyspec;
     private Cipher cipher;
 
-    private String SecretKey = DevConfig.AppSecret;//Dummy secretKey (CHANGE IT!)
 
-    public MCrypt() {
+    public MCrypt(Config config) {
+        String SecretKey = config.AppSecret;//Dummy secretKey (CHANGE IT!)
+        String iv = config.client_id;//Dummy iv (CHANGE IT!)
         ivspec = new IvParameterSpec(iv.getBytes());
 
         keyspec = new SecretKeySpec(SecretKey.getBytes(), "AES");

@@ -1,9 +1,7 @@
 package cn.edu.upc.yb.controller;
 
-import cn.edu.upc.yb.confing.DevConfig;
 import cn.edu.upc.yb.model.Official;
 import cn.edu.upc.yb.model.OfficialDao;
-import cn.edu.upc.yb.model.User;
 import cn.edu.upc.yb.model.UserDao;
 import cn.edu.upc.yb.service.LoginService;
 import cn.edu.upc.yb.util.LinkPage;
@@ -11,13 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by yyljj on 2016/5/21.

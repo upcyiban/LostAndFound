@@ -1,12 +1,11 @@
 package cn.edu.upc.yb.controller;
 
-import cn.edu.upc.yb.confing.DevConfig;
+import cn.edu.upc.yb.confing.Config;
 import cn.edu.upc.yb.model.Official;
 import cn.edu.upc.yb.model.OfficialDao;
 import cn.edu.upc.yb.model.User;
 import cn.edu.upc.yb.model.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -32,6 +29,9 @@ public class AdminController {
 
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private Config config;
 
 
     /**
@@ -111,7 +111,7 @@ public class AdminController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginResult(String username, String password) {
-        if ((Objects.equals(username, DevConfig.adminUsername)) && (Objects.equals(password, DevConfig.adminPassword))) {
+        if ((Objects.equals(username, config.adminUsername)) && (Objects.equals(password, config.adminPassword))) {
             session.setAttribute("user", "admin");
             return "redirect:officialadmin";
         } else {
