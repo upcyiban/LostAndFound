@@ -13,7 +13,7 @@ import java.util.Iterator;
  * Created by yyljj on 2016/5/21.
  */
 public interface OfficialDao extends CrudRepository<Official,Integer>,PagingAndSortingRepository<Official,Integer> {
-    public Iterable<Official> findByIsdeletNotOrderByDateDesc(Boolean isdelet);
+    public Iterable<Official> findByIsdeletNotOrderByIdDesc(Boolean isdelet);
     public Page<Official> findAll(Pageable pageable);
-    public Page<Official> findByIsdeletNotOrderByDateDesc(Boolean isdelet,Pageable pageable);
+    public Page<Official> findByIsdeletNotOrderByIdDesc(Boolean isdelet, Pageable pageable);
 }

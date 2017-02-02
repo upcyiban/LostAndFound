@@ -1,13 +1,10 @@
 package cn.edu.upc.yb.controller;
 
-import cn.edu.upc.yb.model.Official;
 import cn.edu.upc.yb.model.User;
 import cn.edu.upc.yb.model.UserDao;
 import cn.edu.upc.yb.service.LoginService;
 import cn.edu.upc.yb.service.UserService;
 import cn.edu.upc.yb.util.LinkPage;
-import com.sun.org.apache.bcel.internal.generic.MONITORENTER;
-import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -40,7 +37,7 @@ public class UserController {
             return loginService.toYibanAuth();
         }
         Pageable pageable = new PageRequest(page,size);
-        Page<User> pages = userDao.findByIsdeletNotAndIsloserNotOrderByDateDesc(true,false,pageable);
+        Page<User> pages = userDao.findByIsdeletNotAndIsloserNotOrderByIdDesc(true,false,pageable);
         model.addAttribute("page", new LinkPage<User>(pages,"/findloser"));
 
         return "findloser";
@@ -52,7 +49,7 @@ public class UserController {
             return loginService.toYibanAuth();
         }
         Pageable pageable = new PageRequest(page,size);
-        Page<User> pages = userDao.findByIsdeletNotAndIsloserNotOrderByDateDesc(true,true,pageable);
+        Page<User> pages = userDao.findByIsdeletNotAndIsloserNotOrderByIdDesc(true,true,pageable);
         model.addAttribute("page", new LinkPage<User>(pages,"/findthing"));
         return "findthing";
     }

@@ -130,9 +130,9 @@ public class AdminController {
         if (session.getAttribute("user") == null) {
             return "login";//web
         } else {
-            Iterable<Official> lists = officialDao.findByIsdeletNotOrderByDateDesc(true);
+            Iterable<Official> lists = officialDao.findByIsdeletNotOrderByIdDesc(true);
             model.addAttribute("lists", lists);
-            Iterable<User> lists2 = userDao.findByIsdeletNotOrderByDateDesc(true);
+            Iterable<User> lists2 = userDao.findByIsdeletNotOrderByIdDesc(true);
             model.addAttribute("lists2", lists2);
             return "officialadmin";
         }
